@@ -48,21 +48,23 @@ def create_table_hb():
 
 
 def make_commit_a():
+    '''
     cursor3.execute(""" CREATE TABLE IF NOT EXISTS amount (
                             id serial PRIMARY KEY,
                             amountT int check (amountT >= 0));
                     """)
+    '''
     cursor3.execute("""INSERT INTO amount (amountT)
                         VALUES (%s);
-                    """, (100,))
+                    """, (110,))
+
     print('amount created')
 
 
-create_table_hb()
-create_table_fb()
-make_commit_a()
 try:
-    None
+    create_table_hb()
+    create_table_fb()
+    make_commit_a()
 except:
     print("Crash DB")
 finally:
